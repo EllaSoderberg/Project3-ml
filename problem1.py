@@ -6,18 +6,18 @@ from sklearn import linear_model
 from sklearn.metrics import mean_squared_error, r2_score
 
 concrete_dataset = pd.read_csv('data/Concrete_Data.csv')
-collumn_names = list(concrete_dataset)
+column_names = list(concrete_dataset)
 
 print(concrete_dataset.head(5))
 
 for i in range(0, 7):
     plt.figure()
     plt.scatter(concrete_dataset.values[:, i], concrete_dataset.values[:, -1], color='black')
-    plt.xlabel(collumn_names[i])
-    plt.ylabel(collumn_names[-1])
-    plt.show
+    plt.xlabel(column_names[i])
+    plt.ylabel(column_names[-1])
+    plt.show()
 
-selected_variable = 0;
+selected_variable = 0
 concrete_X = concrete_dataset.values[:, np.newaxis, selected_variable]
 concrete_Y = concrete_dataset.values[:, -1]
 
