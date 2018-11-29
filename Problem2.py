@@ -105,18 +105,18 @@ def estimate_values(x_vals, y_vals, weight, bias):
     return estimation
 
 
-def one_variable_gradient_descent(x, y, learning_rate=0.0001, no_iterations=100, plot=True):
+def one_variable_gradient_descent(x, y, x_test, y_test, learning_rate=0.0001, no_iterations=100, plot=True):
 
     initial_weight, initial_bias = coefficient_estimation(x, y)
-    y_initial_pred = estimate_values(x, y, initial_weight, initial_bias)
+    y_initial_pred = estimate_values(x_test, y_test, initial_weight, initial_bias)
     print("Starting values: Weight: {0}, Bias: {1}, Mean squared error: {2}, Regression score: {3}"
-          .format(initial_weight, initial_bias, mean_squared_error(y, y_initial_pred), r2_score(y, y_initial_pred)))
+          .format(initial_weight, initial_bias, mean_squared_error(y_test, y_initial_pred), r2_score(y_test, y_initial_pred)))
     print("Finding a better weight and bias using gradient descent....")
     print("Learning rate is {0} and number of iterations is {1}".format(learning_rate, no_iterations))
     weight, bias = coefficient_finder(x, y, initial_weight, initial_bias, learning_rate, no_iterations)
-    y_pred = estimate_values(x, y, weight, bias)
+    y_pred = estimate_values(x_test, y_test, weight, bias)
     print("Final values: Weight: {0}, Bias: {1}, Mean squared error: {2}, Regression score: {3} "
-          .format(weight, bias, mean_squared_error(y, y_pred), r2_score(y, y_pred)))
+          .format(weight, bias, mean_squared_error(y_test, y_pred), r2_score(y_test, y_pred)))
 
     if plot:
         fig = plt.figure()
@@ -125,8 +125,8 @@ def one_variable_gradient_descent(x, y, learning_rate=0.0001, no_iterations=100,
         ax3 = fig.add_subplot(111)
 
         ax1.scatter(x, y)
-        ax2.plot(x, y_initial_pred)
-        ax3.plot(x, y_pred)
+        ax2.plot(x_test, y_initial_pred)
+        ax3.plot(x_test, y_pred)
 
         plt.show()
 
