@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from Problem1 import sklearn_gradient_descent
 from Problem2 import one_variable_gradient_descent
 from Problem3 import multiple_variable_gradient_descent
-from Problem4 import poly_transormation
+from Problem4 import poly_transformation
 
 
 def plot_all(concrete_dataset, column_names):
@@ -76,7 +76,7 @@ degree = 2
 
 concrete_X = concrete_data.values[:, selected_features]
 concrete_y = concrete_data.values[:, np.newaxis, -1]
-concrete_X = poly_transormation(concrete_X, degree)
+concrete_X = poly_transformation(concrete_X, degree)
 
 X_train_poly, X_test_poly, y_train_poly, y_test_poly = train_test_split(
     concrete_X, concrete_y, test_size=0.2, random_state=42)

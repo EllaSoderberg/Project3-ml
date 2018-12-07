@@ -24,7 +24,7 @@ def poly_features(data, degree, p):
             values.append(data[i])
     return values
 
-def poly_transormation(data, degree):
+def poly_transformation(data, degree):
     newdata = []
 
     for j in range(0, len(data)):
