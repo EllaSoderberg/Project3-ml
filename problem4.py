@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def poly_features(data, degree, p):
     values = []
 
@@ -36,9 +35,5 @@ def poly_transformation(data, degree):
         newdata.append(values)
 
     return np.array(newdata)
-
-
-
-
 
 

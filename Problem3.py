@@ -23,4 +23,3 @@ def multiple_variable_gradient_descent(X_train, y_train, X_test, y_test, learnin
 
     print("Testing values: Mean squared error: {0}, Regression score: {1} "
           .format(mean_squared_error(y_test, y_pred), r2_score(y_test, y_pred)))
-

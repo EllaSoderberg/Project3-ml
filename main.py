@@ -99,7 +99,7 @@ multiple_variable_gradient_descent(X_train_multiple, y_train_multiple, X_test_mu
 print("\n---------------------------------------------------\n"
       "Problem 4: Polynomial regression by your own gradient descent....")
 # Problem 4
-multiple_variable_gradient_descent(X_train_poly, y_train_poly, X_test_poly, y_test_poly, 1 / 10 ** 12, 20000)
+multiple_variable_gradient_descent(X_train_poly, y_train_poly, X_test_poly, y_test_poly, 1 / 10 ** 12, 500000)
 
 
 
