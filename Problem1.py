@@ -4,7 +4,7 @@ from sklearn import linear_model
 from sklearn.metrics import mean_squared_error, r2_score
 
 
-def sklearn_gradient_descent(X, y, X_test, y_test, plot=True):
+def sklearn_gradient_descent(X, y, X_test, y_test, x_label=None, y_label=None, plot=True):
 
     print("\n---------------------------------------------------\nProblem 1: Linear regression using sklearn....")
 
@@ -21,18 +21,6 @@ def sklearn_gradient_descent(X, y, X_test, y_test, plot=True):
     print("Final values: Weight: {0}, Bias: {1}, Mean squared error: {2}, Regression score: {3} "
           .format(regr.coef_, regr.intercept_, mean_squared_error(y_test, y_pred), r2_score(y_test, y_pred)))
 
-    '''
-    # The bias
-    print('Bias: ', regr.intercept_)
-    # The coefficients
-    print('Coefficients: \n', regr.coef_)
-    # The mean squared error
-    print("Mean squared error: %f" % mean_squared_error(y_test, y_pred))
-    # Explained variance score: 1 is perfect prediction
-    print('Variance score: %f' % r2_score(y_test,
-                                          y_pred))  # regr.score(concrete_X_test, concrete_Y_test)
-    '''
-
     # Plot outputs
     if plot:
         plt.figure()
@@ -40,7 +28,7 @@ def sklearn_gradient_descent(X, y, X_test, y_test, plot=True):
         plt.scatter(X_test, y_test, color='black')
         plt.plot(X_test, y_pred, color='blue', linewidth=3)
 
-        # plt.xticks(())
-        # plt.yticks(())
+        plt.xlabel(x_label)
+        plt.ylabel(y_label)
 
         plt.show()

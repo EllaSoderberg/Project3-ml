@@ -12,8 +12,8 @@ def plot_all(concrete_dataset, column_names):
     for i in range(0, 7):
         plt.figure()
         plt.scatter(concrete_dataset.values[:, -1], concrete_dataset.values[:, i], color='black')
-        plt.xlabel(column_names[i])
-        plt.ylabel(column_names[-1])
+        plt.xlabel(column_names[-1])
+        plt.ylabel(column_names[i])
         plt.show()
 
 
@@ -43,7 +43,7 @@ concrete_data = pd.read_csv('data/Concrete_Data.csv')
 data_labels = list(concrete_data)
 
 # Plot all features, with the features on the x-axis and the target on the y axis.
-plot_all(concrete_data, data_labels)
+#plot_all(concrete_data, data_labels)
 
 # Data split for one feature
 selected_feature = 0
@@ -70,14 +70,16 @@ X_train_multiple, X_test_multiple, y_train_multiple, y_test_multiple = train_tes
     concrete_X, concrete_y, test_size=0.2, random_state=42)
 
 # Problem 1
-sklearn_gradient_descent(X_train_single, y_train_single, X_test_single, y_test_single)
+sklearn_gradient_descent(X_train_single, y_train_single, X_test_single, y_test_single,
+                         concrete_data.columns[-1], concrete_data.columns[selected_feature])
 # W/O random data
-sklearn_gradient_descent(concrete_X_train, concrete_Y_train, concrete_X_test, concrete_Y_test)
+# sklearn_gradient_descent(concrete_X_train, concrete_Y_train, concrete_X_test, concrete_Y_test)
 
 # Problem 2
-one_variable_gradient_descent(X_train_single, y_train_single, X_test_single, y_test_single, 0.0000001, 100)
+one_variable_gradient_descent(X_train_single, y_train_single, X_test_single, y_test_single,
+                              concrete_data.columns[-1], concrete_data.columns[selected_feature], 0.0000001, 1000)
 # W/O random data
-one_variable_gradient_descent(concrete_X_train, concrete_Y_train, concrete_X_test, concrete_Y_test, 0.0000001, 100)
+# one_variable_gradient_descent(concrete_X_train, concrete_Y_train, concrete_X_test, concrete_Y_test, 0.0000001, 100)
 
 # Problem 3
 multiple_variable_gradient_descent(X_train_multiple, y_train_multiple, X_test_multiple, y_test_multiple)

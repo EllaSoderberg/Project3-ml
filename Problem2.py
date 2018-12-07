@@ -73,12 +73,10 @@ def gradient_descent(weight, bias, x_vals, y_vals, learning_rate):
     for i in range(n):
         x = x_vals[i]
         y = y_vals[i]
-        #w_grad += (weight * x - bias) - y
-        #_grad += ((weight * x - bias) - y) * x
         w_grad += -(2/n) * (y - ((bias * x) + weight))
         b_grad += -(2/n) * x * (y - ((bias * x) + weight))
-    weight -= (learning_rate * w_grad)#/n
-    bias -= (learning_rate * b_grad)#/n
+    weight -= (learning_rate * w_grad)
+    bias -= (learning_rate * b_grad)
     return weight, bias
 
 
@@ -112,7 +110,7 @@ def estimate_values(x_vals, y_vals, weight, bias):
     return estimation
 
 
-def one_variable_gradient_descent(x, y, x_test, y_test, learning_rate=0.0001, no_iterations=100, plot=True):
+def one_variable_gradient_descent(x, y, x_test, y_test, x_label=None, y_label=None, learning_rate=0.0001, no_iterations=100, plot=True):
 
     print("\n---------------------------------------------------\nProblem 2: Linear regression using our own model....")
 
@@ -136,6 +134,9 @@ def one_variable_gradient_descent(x, y, x_test, y_test, learning_rate=0.0001, no
         ax1.scatter(x_test, y_test, color='black')
         ax2.plot(x_test, y_initial_pred, color='black', linewidth=3)
         ax3.plot(x_test, y_pred, color='blue', linewidth=3)
+
+        plt.xlabel(x_label)
+        plt.ylabel(y_label)
 
         plt.show()
 
