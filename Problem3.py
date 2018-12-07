@@ -18,7 +18,7 @@ def multiple_variable_gradient_descent(X_train, y_train, X_test, y_test, learnin
     print(np.negative(X_train[:, 1]).shape)
 
     for i in range(no_iterations):
-        for j in range(no_variables):
+         for j in range(no_variables):
             w[j] = w[j] - (1 / (2 * N)) * learning_rate * (
             (y_train - (X_train.dot(w))).T.dot(np.negative(X_train[:, j])))
 

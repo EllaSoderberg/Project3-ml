@@ -59,7 +59,7 @@ X_train_single, X_test_single, y_train_single, y_test_single = train_test_split(
 concrete_X_train, concrete_X_test, concrete_Y_train, concrete_Y_test = split_data(concrete_data, selected_feature, 0.8)
 
 # Data split for multiple features
-selected_features = [0, 3, 4]
+selected_features = [0, 1, 4]
 
 concrete_X = concrete_data.values[:, selected_features]
 concrete_y = concrete_data.values[:, np.newaxis, -1]
