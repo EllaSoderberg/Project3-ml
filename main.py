@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from Problem1 import sklearn_gradient_descent
 from Problem2 import one_variable_gradient_descent
 from Problem3 import multiple_variable_gradient_descent
+from Problem4 import poly_transormation
 
 
 def plot_all(concrete_dataset, column_names):
@@ -69,6 +70,17 @@ concrete_X = np.append(concrete_X, ones, axis=1)
 X_train_multiple, X_test_multiple, y_train_multiple, y_test_multiple = train_test_split(
     concrete_X, concrete_y, test_size=0.2, random_state=42)
 
+# Data split for polynomials
+selected_features = [0, 1, 2, 4, 5]
+degree = 2
+
+concrete_X = concrete_data.values[:, selected_features]
+concrete_y = concrete_data.values[:, np.newaxis, -1]
+concrete_X = poly_transormation(concrete_X, degree)
+
+X_train_poly, X_test_poly, y_train_poly, y_test_poly = train_test_split(
+    concrete_X, concrete_y, test_size=0.2, random_state=42)
+
 # Problem 1
 sklearn_gradient_descent(X_train_single, y_train_single, X_test_single, y_test_single,
                          concrete_data.columns[-1], concrete_data.columns[selected_feature])
@@ -80,9 +92,14 @@ one_variable_gradient_descent(X_train_single, y_train_single, X_test_single, y_t
                               concrete_data.columns[-1], concrete_data.columns[selected_feature], 0.0000001, 1000)
 # W/O random data
 # one_variable_gradient_descent(concrete_X_train, concrete_Y_train, concrete_X_test, concrete_Y_test, 0.0000001, 100)
-
+print("\n---------------------------------------------------\n"
+      "Problem 3: Linear regression with multiple features....")
 # Problem 3
 multiple_variable_gradient_descent(X_train_multiple, y_train_multiple, X_test_multiple, y_test_multiple)
+print("\n---------------------------------------------------\n"
+      "Problem 4: Polynomial regression by your own gradient descent....")
+# Problem 4
+multiple_variable_gradient_descent(X_train_poly, y_train_poly, X_test_poly, y_test_poly, 1 / 10 ** 12, 20000)
 
 
 
